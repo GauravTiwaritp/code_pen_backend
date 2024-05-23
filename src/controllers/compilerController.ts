@@ -13,3 +13,13 @@ export const saveCode = async (req: Request, res: Response) => {
     return res.status(500).send({ message: "please try again", error });
   }
 };
+
+export const loadCode = async (req: Request, res: Response) => {
+  const { id } = req.body;
+  try {
+    const Code = await code.findById(id);
+    return res.status(200).send({ message: "code loaded", Code });
+  } catch (error) {
+    return res.status(500).send({ message: "please try again", error });
+  }
+};
